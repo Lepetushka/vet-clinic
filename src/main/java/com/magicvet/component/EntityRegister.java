@@ -49,10 +49,10 @@ public class EntityRegister {
 
 		for (Client client : clients) {
 			switch (client.getLocation()) {
-				case KYIV -> fromKyiv.add(client);
-				case LVIV -> fromLviv.add(client);
-				case ODESA -> fromOdesa.add(client);
-				case UNKNOWN -> unknownLocation.add(client);
+				case KYIV : fromKyiv.add(client);
+				case LVIV : fromLviv.add(client);
+				case ODESA : fromOdesa.add(client);
+				case UNKNOWN : unknownLocation.add(client);
 			}
 		}
 
