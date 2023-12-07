@@ -1,4 +1,4 @@
-package main.java.com.magicvet;//import main.java.com.magicvet.component.ApplicationRunner;
+package com.magicvet;//import main.java.com.magicvet.component.ApplicationRunner;
 
 
 import java.util.Scanner;
@@ -49,7 +49,7 @@ static void registerNewClient(){
 
 	if(isEmailValid(email)){
 		Client client = buildClient(email);
-		System.out.println("New client: " + client.firstName +" "+ client.lastName+ "( " + client.email+ " )");
+		System.out.println("New client: " + client.getFirstName() +" "+ client.getLastName()+ "( " + client.getEmail()+ " )");
 	} else {
 		System.out.println("Provided email is invalid");
 	}
@@ -58,13 +58,13 @@ static void registerNewClient(){
 
 	static Client buildClient(String email) {
 		Client client =new Client();
-		client.email=email;
+		client.setEmail(email);
 
 		System.out.print("First name: ");
-		client.firstName =SCANNER.nextLine();
+		client.setFirstName(SCANNER.nextLine());
 
 		System.out.print("Last name: ");
-		client.lastName =SCANNER.nextLine();
+		client.setLastName(SCANNER.nextLine());
 
 		return client;
 
