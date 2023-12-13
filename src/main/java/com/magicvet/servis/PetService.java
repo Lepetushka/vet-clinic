@@ -10,7 +10,7 @@ public class PetService {
 
     public Pet registryNewPet(){
         Pet pet =new Pet();
-        System.out.print("Type ( dog / cat /other ): ");
+        System.out.println("Type ( dog / cat /other ): ");
 
         String type = Main.SCANNER.nextLine();
 

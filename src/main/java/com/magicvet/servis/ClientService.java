@@ -30,7 +30,7 @@ public class ClientService {
                     System.out.println("Provided lastname is invalid. ");
 
                 } else {
-                    Client client = buildClient(email,
+                    client = buildClient(email,
                             firstName,
                             lastName);
                     System.out.println("New client: "+client.getFirstName()+" "+
