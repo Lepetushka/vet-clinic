@@ -10,12 +10,15 @@ public class PetService {
 
     public Pet registryNewPet(){
         Pet pet =new Pet();
-        System.out.println("Type ( dog / cat /other ): ");
-
-        String type = Main.SCANNER.nextLine();
 
 
-        if(DOG_TYPE.equals(type)){
+        System.out.print("Type ( dog / cat /other ): ");
+
+        String type = Main.SCANNER.next();
+        pet.setType(type);
+
+
+        if(DOG_TYPE.equals(pet.getType())){
             pet =buildDog();
         } else {
             pet =buildPet(type);
@@ -30,13 +33,14 @@ public class PetService {
         Dog dog=petToDog(pet);
 
         System.out.print("Size ( XS / S / M / L / XXL ): ");
-        dog.setSize(Main.SCANNER.nextLine());
+        dog.setSize(Main.SCANNER.next());
 
         return dog;
     }
 
     private Dog petToDog(Pet pet) {
         Dog dog=new Dog();
+        dog.setType(pet.getType());
         dog.setAge(pet.getAge());
         dog.setName(pet.getName());
         dog.setSex(pet.getSex());
@@ -49,16 +53,16 @@ public class PetService {
         pet.setType(type);
 
         System.out.print("Age:");
-        pet.setAge(Main.SCANNER.nextLine());
+        pet.setAge(Main.SCANNER.next());
 
         System.out.print("Sex ( male / female ):");
-        pet.setSex(Main.SCANNER.nextLine());
+        pet.setSex(Main.SCANNER.next());
 
         System.out.print("Name:");
-        pet.setName(Main.SCANNER.nextLine());
+        pet.setName(Main.SCANNER.next());
 
-//        System.out.print("Owner name:");
-//        pet.setOwnerName(Main.SCANNER.nextLine());
+       System.out.print("Owner name:");
+       pet.setOwnerName(Main.SCANNER.next());
 
 
         return pet;
