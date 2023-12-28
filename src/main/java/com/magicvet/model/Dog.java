@@ -14,6 +14,7 @@ public class Dog extends Pet {
 
     public Dog(String size){
         this.size=size;
+
     }
     @Override
     public String toString(){

@@ -4,7 +4,7 @@ public abstract class Pet {
 
     private String type;
     private String sex;
-    private String age;
+    private int age;
     private String name;
     private String ownerName;
 
@@ -22,7 +22,7 @@ public abstract class Pet {
 
         if (!getType().equals(pet.getType())) return false;
         if (!getSex().equals(pet.getSex())) return false;
-        if (!getAge().equals(pet.getAge())) return false;
+        if (getAge()!=pet.getAge()) return false;
         if (!getName().equals(pet.getName())) return false;
         return getOwnerName().equals(pet.getOwnerName());
     }
@@ -31,7 +31,7 @@ public abstract class Pet {
     public int hashCode() {
         int result = getType().hashCode();
         result = 31 * result + getSex().hashCode();
-        result = 31 * result + getAge().hashCode();
+        result = 31 * result + getAge();
         result = 31 * result + getName().hashCode();
         result = 31 * result + getOwnerName().hashCode();
         return result;
@@ -53,11 +53,11 @@ public abstract class Pet {
         this.sex = sex;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -76,4 +76,11 @@ public abstract class Pet {
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
     }
+
+    public Pet(){}
+
+    public Pet(int age) {
+        this.age=age;
+    }
+
 }
