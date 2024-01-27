@@ -41,11 +41,11 @@ public class PetService {
        System.out.print("Owner name:");
        pet.setOwnerName(Main.SCANNER.next());
 
-       if(type.equals(DOG_TYPE)){
-           System.out.print("Size ( XS / S / M / L / XL ): ");
-           String size =Main.SCANNER.nextLine();
-           ((Dog)pet).setSize(Dog.Size.valueOf(size));
-       }
+        if (type.equals(DOG_TYPE)) {
+            System.out.print("Size (XS / S / M / L / XL): ");
+            String size = Main.SCANNER.next();
+            ((Dog) pet).setSize(Dog.Size.fromString(size));
+        }
 
 
         return pet;

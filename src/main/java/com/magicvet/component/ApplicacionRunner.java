@@ -8,32 +8,43 @@ import com.magicvet.servis.PetService;
 
 public class ApplicacionRunner {
 
-    private final ClientService clientService =new ClientService();
-    private final PetService petService=new PetService();
+    private final ClientService clientService = new ClientService();
+    private final PetService petService = new PetService();
 
-    public  void run(){
-        if(Authenticator.auht()){
-            Client client= clientService.registerNewClient();
+    public void run() {
+        if (Authenticator.auht()) {
+            Client client = clientService.registerNewClient();
 
-            if(client != null) {
-                System.out.print("Do you really need to add a pet now? ( true / false ) :");
-                boolean addPetNow = Main.SCANNER.nextBoolean();
-                if (addPetNow) {
-                    System.out.println("Adding new pet. ");
-                    Pet pet = petService.registryNewPet();
+            if (client != null) {
+                registerPats(client);
+                System.out.println(client);
 
-                    if(pet != null) {
-                        client.setPet(pet);
-                        pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
-                        System.out.println("Pet has been added.");
-                    }
-                    System.out.println(client);
-
-                } else {
-                    System.out.println("Add the animal later");
-
-                }
             }
+        }
+    }
+
+    private void registerPats(Client client) {
+        boolean continueAddPets = true;
+        while (continueAddPets){
+            addPet(client);
+
+            System.out.print("Do you want add moe pets foe the current client? (y/n):");
+            String answer=Main.SCANNER.next();
+
+            if("n".equals(answer)){
+                continueAddPets=false;
+            }
+        }
+    }
+
+    private void addPet(Client client) {
+        System.out.println("Adding new pet. ");
+        Pet pet = petService.registryNewPet();
+
+        if (pet != null) {
+            client.addPet(pet);
+            pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
+            System.out.println("Pet has been added.");
         }
     }
 }

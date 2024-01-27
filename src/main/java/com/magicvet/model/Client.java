@@ -2,6 +2,8 @@ package com.magicvet.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -10,7 +12,7 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
-    private Pet pet;
+    private List<Pet> pets = new ArrayList<>();
     private final LocalDateTime registrationDate=LocalDateTime.now();
 
     public Client(String firstName, String lastName, String email){
@@ -26,7 +28,7 @@ public class Client {
                 + "\n\tfirstName = "+ firstName
                 + ", lastName =" + lastName
                 + ", email = " + email
-                + ", \n\tpet =" + pet
+                + ", \n\tpets =" + pets
                 + ", \n\tregistrationDate = " + registrationDate.format(FORMATTER)
                 + "\n}";
     }
@@ -73,11 +75,16 @@ public class Client {
         this.email=email;
     }
 
-    public Pet getPet() {
-        return pet;
+    public List<Pet> getPet() {
+        return pets;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPet(List<Pet> pets) {
+
+        this.pets = pets;
+    }
+
+    public void addPet(Pet pet){
+        pets.add(pet);
     }
 }

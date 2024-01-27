@@ -17,13 +17,15 @@ public abstract class Pet {
 
 
     @Override
-    public String toString(){
-        return "type: "+type+", "
-                +"name: "+name
-                +", sex: "+ sex
-                +", age "+age
-                +", ownerName: "+ownerName
-                +", registrationDate: " +registrationDate.format(FORMATTER);
+    public String toString() {
+        return "Pet {"
+                + "type = " + getType()
+                + ", sex = " + getSex()
+                + ", age = " + getAge()
+                + ", name = " + getName()
+                + ", ownerName = " + getOwnerName()
+                + ", registrationDate = " + getRegistrationDate().format(FORMATTER)
+                + "}";
     }
 
     @Override
@@ -92,6 +94,10 @@ public abstract class Pet {
 
     public Pet(int age) {
         this.age=age;
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
     }
 
 

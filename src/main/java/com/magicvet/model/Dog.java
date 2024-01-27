@@ -1,9 +1,12 @@
 package com.magicvet.model;
 
+import java.time.format.DateTimeFormatter;
+
 public class Dog extends Pet {
 
 
     private Size size;
+    private static final DateTimeFormatter FORMATTER=DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
 
     public Dog(){}
 
@@ -12,10 +15,16 @@ public class Dog extends Pet {
 
     }
     @Override
-    public String toString(){
-        return "type: "+getType()+", name: "+getName()
-                +", sex: "+ getSex()
-                +", age "+getAge();
+    public String toString() {
+        return "Pet {"
+                + "type = " + getType()
+                + ", sex = " + getSex()
+                + ", age = " + getAge()
+                + ", name = " + getName()
+                + ", size = " + getSize()
+                + ", ownerName = " + getOwnerName()
+                + ", registrationDate = " + getRegistrationDate().format(FORMATTER)
+                + "}";
     }
 
     public Size getSize() {
@@ -32,11 +41,22 @@ public class Dog extends Pet {
         M(3),
         L(4),
         XL(5),
-        UNNULL(0);
+        UNKNOWN(0);
         private final int value;
-
-        Size(int value) {
+         Size(int value) {
             this.value = value;
+        }
+
+        public static Size fromString(String value) {
+            for (Size size : values()) {
+                if (size.toString().equals(value)) {
+                    return size;
+                }
+            }
+
+            System.out.println("Unable to parse value '" + value + "'. Using default value: " + UNKNOWN);
+
+            return UNKNOWN;
         }
 
         public int getValue() {
