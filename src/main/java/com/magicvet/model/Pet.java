@@ -108,8 +108,20 @@ public abstract class Pet {
         MODERATE(3),
         SEVERE(4),
         CRITICAL(5),
-        UNNULL(0);
+        UNKNOWN(0);
         private final int value;
+
+        public static Pet.HealthState fromString(String value) {
+            for (Pet.HealthState type : values()) {
+                if (type.toString().equals(value)) {
+                    return type;
+                }
+            }
+
+            System.out.println("Unable to parse value '" + value + "'. Using default value: " + UNKNOWN);
+
+            return UNKNOWN;
+        }
 
         HealthState(int value) {
             this.value = value;

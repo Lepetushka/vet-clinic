@@ -14,6 +14,7 @@ public class Client {
     private String email;
     private List<Pet> pets = new ArrayList<>();
     private final LocalDateTime registrationDate=LocalDateTime.now();
+    private Location location;
 
     public Client(String firstName, String lastName, String email){
         this.firstName=firstName;
@@ -28,6 +29,7 @@ public class Client {
                 + "\n\tfirstName = "+ firstName
                 + ", lastName =" + lastName
                 + ", email = " + email
+                + ", location =" + location
                 + ", \n\tpets =" + pets
                 + ", \n\tregistrationDate = " + registrationDate.format(FORMATTER)
                 + "\n}";
@@ -41,7 +43,7 @@ public class Client {
         if (!getFirstName().equals(client.getFirstName())) return false;
         if (!getLastName().equals(client.getLastName())) return false;
         if (!getEmail().equals(client.getEmail())) return false;
-        return getPet().equals(client.getPet());
+        return getPets().equals(client.getPets());
     }
 
     @Override
@@ -49,7 +51,7 @@ public class Client {
         int result = getFirstName().hashCode();
         result = 31 * result + getLastName().hashCode();
         result = 31 * result + getEmail().hashCode();
-        result = 31 * result + getPet().hashCode();
+        result = 31 * result + getPets().hashCode();
         return result;
     }
 
@@ -75,16 +77,28 @@ public class Client {
         this.email=email;
     }
 
-    public List<Pet> getPet() {
+    public List<Pet> getPets() {
         return pets;
     }
 
-    public void setPet(List<Pet> pets) {
+    public void setPets(List<Pet> pets) {
 
         this.pets = pets;
     }
 
     public void addPet(Pet pet){
         pets.add(pet);
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public enum Location {
+        KYIV, LVIV, ODESA
     }
 }

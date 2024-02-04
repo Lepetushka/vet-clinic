@@ -14,20 +14,20 @@ public class ClientService {
         Client client=null;
         System.out.println("Please provide client details. ");
         System.out.print("email: ");
-        String email= Main.SCANNER.nextLine();
+        String email= Main.SCANNER.next();
 
         if(!isEmailValid(email)){
-            System.out.println("Provided email is invalid");
+            System.out.print("Provided email is invalid");
         } else {
             System.out.print("First name: ");
-            String firstName=Main.SCANNER.nextLine();
+            String firstName=Main.SCANNER.next();
             if(!isFirstNameValid(firstName)){
-                System.out.println("Provided firstname is invalid. ");
+                System.out.print("Provided firstname is invalid. ");
             } else {
                 System.out.print("Last name: ");
-                String lastName=Main.SCANNER.nextLine();
+                String lastName=Main.SCANNER.next();
                 if(!isFirstNameValid(lastName)){
-                    System.out.println("Provided lastname is invalid. ");
+                    System.out.print("Provided lastname is invalid. ");
 
                 } else {
                     client = buildClient(email,
@@ -46,6 +46,11 @@ public class ClientService {
         client.setEmail(email);
         client.setFirstName(firstName);
         client.setLastName(lastName);
+
+        System.out.println("Location: ");
+        String location=Main.SCANNER.next();
+        client.setLocation(Client.Location.valueOf(location));
+
         return client;
     }
 
